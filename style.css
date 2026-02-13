@@ -1,0 +1,112 @@
+body {
+    background-color: #fdf0e1;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #5a3e2b;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between; /* Separa árbol de texto */
+    align-items: center;
+    position: relative; /* Base para la foto absoluta */
+    width: 100%;
+    height: 450px;
+    padding: 0 50px;
+}
+
+/* FOTO CENTRAL: Flota en medio sin mover nada */
+.photo-floating {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    z-index: 100;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards 3s; /* Aparece al final */
+}
+
+.couple-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 10px 30px rgba(255, 77, 109, 0.3);
+}
+
+/* ÁRBOL */
+.tree-container {
+    position: relative;
+    width: 300px;
+    height: 350px;
+}
+
+.tree-trunk {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    animation: trunkGrow 2s ease-out forwards;
+}
+
+.tree-heart {
+    position: absolute;
+    transform: scale(0);
+    animation: heartPop 0.8s ease forwards;
+}
+
+/* TEXTO */
+.text-section {
+    width: 350px;
+    text-align: left;
+    z-index: 10;
+}
+
+.typing-text {
+    font-size: 1.4rem;
+    min-height: 5em;
+    border-right: 3px solid #5a3e2b;
+    white-space: pre-wrap;
+}
+
+.bears-img {
+    width: 150px;
+    margin-top: 15px;
+}
+
+/* CONTADOR */
+.counter-section { margin-top: 40px; text-align: center; }
+#timer { font-weight: bold; font-size: 1.6rem; margin-top: 10px; }
+
+/* ANIMACIONES */
+@keyframes trunkGrow { to { transform: scaleY(1); } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes heartPop { to { transform: scale(1); } }
+
+.heart-particle {
+    position: fixed;
+    bottom: -50px;
+    z-index: -1;
+    animation: floatUp linear forwards;
+}
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+}
